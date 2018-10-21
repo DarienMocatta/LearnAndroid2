@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id= "@+id/item_Activities"
+        android:checkable="true"
+        android:title="1.1 Actitvies"
+        android:icon= "@drawable/ic_play_circle_filled_black_24dp"/>
+
+    <item
+        android:id= "@+id/item_Sevices"
+        android:checkable="true"
+        android:title="1.2 Services"
+        android:icon= "@drawable/ic_play_circle_filled_black_24dp"/>
+
+
+    <item
+        android:id= "@+id/item_Broadcast_Recievers"
+        android:checkable="true"
+        android:title="1.3 Broadcast Recievers"
+        android:icon= "@drawable/ic_play_circle_filled_black_24dp"/>
+
+
+    <item
+        android:id= "@+id/item_Content_Providers"
+        android:checkable="true"
+        android:title="1.4 Content Providers"
+        android:icon= "@drawable/ic_play_circle_filled_black_24dp"/>/>
+
+    <item
+        android:id= "@+id/item_Activity_Lifecycle"
+        android:checkable="true"
+        android:title="1.5 Activity Lifecycle"
+        android:icon= "@drawable/ic_play_circle_filled_black_24dp"/>
+    <item
+        android:id= "@+id/item_Quiz"
+        android:checkable="true"
+        android:title="Quiz"
+        android:icon= "@drawable/ic_live_help_black_24dp"/>
+
+</menu>
+

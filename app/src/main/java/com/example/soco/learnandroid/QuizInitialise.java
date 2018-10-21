@@ -2,7 +2,6 @@ package com.example.soco.learnandroid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class StartingScreenActivity extends AppCompatActivity {
+public class QuizInitialise extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
 
@@ -52,7 +51,7 @@ public class StartingScreenActivity extends AppCompatActivity {
     private void startQuiz() {
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
-        Intent intent = new Intent(StartingScreenActivity.this, QuizActivity.class);
+        Intent intent = new Intent(QuizInitialise.this, QuizActivity.class);
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
         startActivityForResult(intent, REQUEST_CODE_QUIZ);
     }

@@ -6,18 +6,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.soco.learnandroid.QuizContract.*;
+import com.example.soco.learnandroid.QuizTableInitialise.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class QuizDbHelper extends SQLiteOpenHelper {
+public class QuizDBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "MyAwesomeQuiz.db";
     private static final int DATABASE_VERSION = 2;
 
     private SQLiteDatabase db;
 
-    public QuizDbHelper(Context context) {
+    public QuizDBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -47,26 +46,52 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionsTable() {
-        Question q1 = new Question("Easy: A is correct",
-                "A", "B", "C", 1, Question.DIFFICULTY_EASY);
+        Question q1 = new Question("Which of the following are not a key component in Android",
+                "Activities", "Content Providers", "Intents", 3, Question.DIFFICULTY_EASY);
         addQuestion(q1);
-        Question q2 = new Question("Medium: B is correct",
-                "A", "B", "C", 2, Question.DIFFICULTY_MEDIUM);
+        Question q2 = new Question("_______is an application component that can perform long-running operations in the background, and it doesn't provide a user interface.",
+                "Activities", "Services", "Content Providers", 2, Question.DIFFICULTY_EASY);
         addQuestion(q2);
-        Question q3 = new Question("Medium: C is correct",
-                "A", "B", "C", 3, Question.DIFFICULTY_MEDIUM);
+        Question q3 = new Question("What method is called when initializing an Activity?",
+                "OnCreate", "onStart", "onResume", 1, Question.DIFFICULTY_EASY);
         addQuestion(q3);
-        Question q4 = new Question("Hard: A is correct",
+        Question q4 = new Question("Which of the following components is used to share data across applications?",
+                "Services", "Content Providers", "Broadcast Receivers", 2, Question.DIFFICULTY_EASY);
+        addQuestion(q4);
+        Question q5 = new Question("Which method is called when shutting the activity down?",
+                "onPause", "onStop", "onDestroy", 3, Question.DIFFICULTY_EASY);
+        addQuestion(q5);
+        Question q6 = new Question("Broadcast Receivers are best used for",
+                "The system automatically sending messages when various system events occur", "Running multiple activities simultaneously in the background", "Accessing and sharing data across multiple applications.", 1, Question.DIFFICULTY_MEDIUM);
+        addQuestion(q6);
+        Question q7 = new Question("Once the onStop method is called, which method is required next to resume the activity?",
+                "onStart", "onCreate", "onRestart", 3, Question.DIFFICULTY_MEDIUM);
+        addQuestion(q7);
+        Question q8 = new Question("Audio playing in the background is an example of which type of component",
+                "Content Provider", "Services", "Broadcast Recievers", 2, Question.DIFFICULTY_MEDIUM);
+        addQuestion(q8);
+        Question q9 = new Question("The AbstractThreadedSyncAdapter, CursorAdapter and CursorLoader all rely on which component class?",
+                "Activity", "Broadcast Receiver", "Content Provider", 3, Question.DIFFICULTY_MEDIUM);
+        addQuestion(q9);
+        Question q10 = new Question("Which of the following is not a type of Service?",
+                "Foreground", "Middleground", "Background", 2, Question.DIFFICULTY_MEDIUM);
+        addQuestion(q10);
+        Question q11 = new Question("Activity class takes care of creating a window for you in which you can place your UI with ________",
+                "setContentView(View)", "onCreate(Bundle savedInstanceState)", "super.onCreate(savedInstanceState);", 1, Question.DIFFICULTY_HARD);
+        addQuestion(q11);
+        Question q12 = new Question("The visible lifecycle of an activity occurs between which two methods?",
+                "onStart(), onStop()", "onStart(), onPause()", "onCreate(), onStop", 1, Question.DIFFICULTY_HARD);
+        addQuestion(q12);
+        Question q13 = new Question("Placeholder",
+                "A", "B", "C", 3, Question.DIFFICULTY_HARD);
+        addQuestion(q13);
+        Question q14 = new Question("Placeholder",
                 "A", "B", "C", 1, Question.DIFFICULTY_HARD);
         addQuestion(q4);
-        Question q5 = new Question("Hard: B is correct",
+        Question q15 = new Question("Placeholder",
                 "A", "B", "C", 2, Question.DIFFICULTY_HARD);
-        addQuestion(q5);
-        Question q6 = new Question("Hard: C is correct",
-                "A", "B", "C", 3, Question.DIFFICULTY_HARD);
-        addQuestion(q6);
-
-    }
+        addQuestion(q15);
+           }
 
     private void addQuestion(Question question) {
         ContentValues cv = new ContentValues();

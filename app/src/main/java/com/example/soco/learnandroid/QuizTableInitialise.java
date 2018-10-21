@@ -2,9 +2,9 @@ package com.example.soco.learnandroid;
 
 import android.provider.BaseColumns;
 
-public final class QuizContract {
+public final class QuizTableInitialise {
 
-    private QuizContract(){}
+    private QuizTableInitialise(){}
 
     public static class QuestionsTable implements BaseColumns{
 

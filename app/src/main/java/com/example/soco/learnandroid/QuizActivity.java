@@ -14,24 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
 
 public class QuizActivity extends AppCompatActivity {
@@ -91,12 +76,12 @@ public class QuizActivity extends AppCompatActivity {
         textColorDefaultCd = textViewCountDown.getTextColors();
 
         Intent intent = getIntent();
-        String difficulty = intent.getStringExtra(StartingScreenActivity.EXTRA_DIFFICULTY);
+        String difficulty = intent.getStringExtra(QuizInitialise.EXTRA_DIFFICULTY);
 
         textViewDifficulty.setText("Difficulty: "+ difficulty);
 
         if (savedInstanceState == null) {
-            QuizDbHelper dbHelper = new QuizDbHelper(this);
+            QuizDBHandler dbHelper = new QuizDBHandler(this);
             questionList = dbHelper.getQuestions(difficulty);
             questionCountTotal = questionList.size();
             Collections.shuffle(questionList);
