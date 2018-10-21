@@ -17,14 +17,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>5
+        </activity>
+        5
         <activity android:name=".QuizActivity" />
         <activity android:name=".QuizInitialise" />
         <activity android:name=".ActivitiesLesson" />
-        <activity android:name=".Lesson2" />
-        <activity android:name=".Lesson3" />
-        <activity android:name=".Lesson4" />
-        <activity android:name=".Lesson5"></activity>
+        <activity android:name=".ActivitiesLesson2" />
+        <activity android:name=".ActivitiesLesson3" />
+        <activity android:name=".ActivitiesLesson4" />
+        <activity android:name=".ActivitiesLesson5" />
     </application>
 
 </manifest>

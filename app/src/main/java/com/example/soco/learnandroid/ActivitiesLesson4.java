@@ -1,19 +1,18 @@
 package com.example.soco.learnandroid;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class Lesson5 extends AppCompatActivity {
+public class ActivitiesLesson4 extends YouTubeBaseActivity {
 
-
-    private static final String TAG = "Lesson5";
+    private static final String TAG = "ActivitiesLesson";
 
     YouTubePlayerView mYouTubePlayerView;
     Button btnPlay;
@@ -22,7 +21,7 @@ public class Lesson5 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson5);
+        setContentView(R.layout.activity_activities_lesson2);
         Log.d(TAG, "on Create: Starting");
         btnPlay = (Button) findViewById(R.id.btnPlay);
         mYouTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtubePlay);
@@ -32,7 +31,7 @@ public class Lesson5 extends AppCompatActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d(TAG, "on Create: Done initialising.");
                 //youTubePlayer.loadVideo("2duc77RHqw");
-                youTubePlayer.loadVideo("UJN3AL4tiqw");
+                youTubePlayer.loadVideo("ibti6yg_NCc");
             }
 
             @Override
@@ -52,3 +51,4 @@ public class Lesson5 extends AppCompatActivity {
 
     }
 }
+
