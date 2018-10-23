@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--<android.support.design.widget.NavigationView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:id="@+id/nav_view"-->
-        <!--android:layout_gravity="start"-->
-        <!--app:headerLayout="@layout/navigation_header"-->
-        <!--app:menu="@menu/menuitem">-->
-    <!--</android.support.design.widget.NavigationView>-->
+
 
 
     <view

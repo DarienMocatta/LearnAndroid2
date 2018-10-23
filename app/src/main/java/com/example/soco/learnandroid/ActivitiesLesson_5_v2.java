@@ -1,25 +1,36 @@
 package com.example.soco.learnandroid;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+
+public class ActivitiesLesson_5_v2 extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
 
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
-
+    TextView scrollTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_activities_lesson_5_v2);
+
+        YouTubePlayerSupportFragment frag =
+                (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
+        frag.initialize(YouTubeConfiguration.getApiKey(), this);
+
         dl = (DrawerLayout)findViewById(R.id.dl);
         abdt = new ActionBarDrawerToggle(this,dl,R.string.Open, R.string.Close);
         abdt.setDrawerIndicatorEnabled(true);
@@ -29,7 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //make textview scrollable and set text
+        scrollTextView = (TextView) findViewById(R.id.textViewScroll);
+        scrollTextView.setMovementMethod(new ScrollingMovementMethod());
+        scrollTextView.setText(Html.fromHtml(getString(R.string.Lesson1_String)));
 
+
+
+
+        //NAV Bar
         NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -38,44 +57,58 @@ public class MainActivity extends AppCompatActivity {
 
                 if(id== R.id.item_Activities)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson.class);
+                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, ActivitiesLesson.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Sevices)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson2.class);
+                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, ActivitiesLesson2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Broadcast_Recievers)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson3.class);
+                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, ActivitiesLesson3.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Content_Providers)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson4.class);
+                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, ActivitiesLesson4.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Activity_Lifecycle)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson_5_v2.class);
+                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, ActivitiesLesson_5_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Quiz)
                 {
-                    Intent intent = new Intent(MainActivity.this, QuizInitialise.class);
+                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, QuizInitialise.class);
                     startActivity(intent);
                 }
+
 
                 return true;
             }
         });
 
+
+
     }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+        if (!b) {
+
+           youTubePlayer.loadVideo("nCgQDjiotG0");
+
+    }}
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
     }
 }
