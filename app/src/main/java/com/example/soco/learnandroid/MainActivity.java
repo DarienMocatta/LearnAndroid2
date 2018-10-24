@@ -7,19 +7,29 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
+    TextView introText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        //Set Intro Text:
+        introText = (TextView) findViewById(R.id.introText) ;
+        introText.setText(Html.fromHtml(getString(R.string.Intro_Sring)));
+
+
+        //navigation
         dl = (DrawerLayout)findViewById(R.id.dl);
         abdt = new ActionBarDrawerToggle(this,dl,R.string.Open, R.string.Close);
         abdt.setDrawerIndicatorEnabled(true);
@@ -70,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
 
     }
 

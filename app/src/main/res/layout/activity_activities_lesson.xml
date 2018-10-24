@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/introText"
         android:layout_width="128dp"
         android:layout_height="21dp"
         android:layout_marginBottom="8dp"

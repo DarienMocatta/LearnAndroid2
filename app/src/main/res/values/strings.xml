@@ -5,6 +5,28 @@
 
     <!--formatting of strings using HTML:-->
 
+
+    <string name="Intro_Sring">
+        <![CDATA[
+        <html><body>
+        <h2>WECLOME</h2>
+
+        <p>
+        This application is built to
+        educate you on the five key components of Android. The five topics covered include Activities, Services,
+         Content Providers, Broadcast Receivers and the Activity Lifecycle. Each topic will display a video and
+         text to provide a comprehensive understanding of each topic. After completing the topics, test your
+         knowledge on the multiple-choice section and challenge yourself by increasing the difficulty each attempt.
+         </p>
+
+         <p>
+         Click on the navigation drawer in the top left corner to begin your learning experience.
+         </p>
+
+        </p></body></html>]]>
+    </string>
+
+
     <string name="Lesson1_String">
         <![CDATA[
         <html><body>
