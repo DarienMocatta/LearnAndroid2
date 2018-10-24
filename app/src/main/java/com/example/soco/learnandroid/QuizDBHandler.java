@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class QuizDBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "MyAwesomeQuiz.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private SQLiteDatabase db;
 

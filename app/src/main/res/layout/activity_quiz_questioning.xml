@@ -94,5 +94,4 @@
         android:text="Confirm"
         android:freezesText="true"/>
 
-
 </RelativeLayout>

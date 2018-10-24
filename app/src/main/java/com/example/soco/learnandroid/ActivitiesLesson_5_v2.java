@@ -103,7 +103,7 @@ public class ActivitiesLesson_5_v2 extends AppCompatActivity implements YouTubeP
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {
 
-           youTubePlayer.loadVideo("nCgQDjiotG0");
+           youTubePlayer.loadVideo("UJN3AL4tiqw");
 
     }}
 
