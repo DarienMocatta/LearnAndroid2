@@ -21,11 +21,10 @@
         5
         <activity android:name=".QuizActivity" />
         <activity android:name=".QuizInitialise" />
-        <activity android:name=".ActivitiesLesson" />
-        <activity android:name=".ActivitiesLesson2" />
-        <activity android:name=".ActivitiesLesson3" />
-        <activity android:name=".ActivitiesLesson4" />
-        <activity android:name=".ActivitiesLesson5" />
+        <activity android:name=".ActivitiesLesson_1_v2"/>
+        <activity android:name=".ActivitiesLesson_2_v2"/>
+        <activity android:name=".ActivitiesLesson_3_v2"/>
+        <activity android:name=".ActivitiesLesson_4_v2"/>
         <activity android:name=".ActivitiesLesson_5_v2"></activity>
     </application>
 

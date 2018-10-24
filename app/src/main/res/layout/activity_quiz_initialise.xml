@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="LearnAndroid: The Quiz"
-        android:textColor="@android:color/black"
-        android:textSize="35sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Test Your Knowledge"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
 
     <TextView
         android:id="@+id/text_view_highscore"

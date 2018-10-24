@@ -48,22 +48,22 @@ public class MainActivity extends AppCompatActivity {
 
                 if(id== R.id.item_Activities)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson.class);
+                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson_1_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Sevices)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson2.class);
+                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson_2_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Broadcast_Recievers)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson3.class);
+                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson_3_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Content_Providers)
                 {
-                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson4.class);
+                    Intent intent = new Intent(MainActivity.this, ActivitiesLesson_4_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Activity_Lifecycle)
