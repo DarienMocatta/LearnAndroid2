@@ -6,13 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.soco.learnandroid.QuizTableInitialise.*;
+import com.example.soco.learnandroid.QuizTableColumns.*;
 
 import java.util.ArrayList;
 
+//class to create sqlite database.
 public class QuizDBHandler extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "MyAwesomeQuiz.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final String DATABASE_NAME = "LearnAndroidQuiz.db";
+    private static final int DATABASE_VERSION = 1;
 
     private SQLiteDatabase db;
 
@@ -28,10 +29,10 @@ public class QuizDBHandler extends SQLiteOpenHelper {
                 QuestionsTable.TABLE_NAME + " ( " +
                 QuestionsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 QuestionsTable.COLUMN_QUESTION + " TEXT, " +
-                QuestionsTable.COLUMN_OPTION1 + " TEXT, " +
-                QuestionsTable.COLUMN_OPTION2 + " TEXT, " +
-                QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
-                QuestionsTable.COLUMN_ANSWER_NR + " INTEGER, " +
+                QuestionsTable.COLUMN_MULTI_OPTION1 + " TEXT, " +
+                QuestionsTable.COLUMN_MULTI_OPTION2 + " TEXT, " +
+                QuestionsTable.COLUMN_MUTLI_OPTION3 + " TEXT, " +
+                QuestionsTable.COLUMN_ANSWER_NUMBER + " INTEGER, " +
                 QuestionsTable.COLUMN_DIFFICULTY + " TEXT" +
                 ")";
 
@@ -82,24 +83,24 @@ public class QuizDBHandler extends SQLiteOpenHelper {
         Question q12 = new Question("The visible lifecycle of an activity occurs between which two methods?",
                 "onStart(), onStop()", "onStart(), onPause()", "onCreate(), onStop", 1, Question.DIFFICULTY_HARD);
         addQuestion(q12);
-        Question q13 = new Question("Placeholder",
-                "A", "B", "C", 3, Question.DIFFICULTY_HARD);
+        Question q13 = new Question("A ________ service offers a client-server interface that allows components to interact with the service, send requests, receive results, and even do so across processes with interprocess communication (IPC).",
+                "Foreground", "Background", "Bound", 3, Question.DIFFICULTY_HARD);
         addQuestion(q13);
-        Question q14 = new Question("Placeholder",
-                "A", "B", "C", 1, Question.DIFFICULTY_HARD);
+        Question q14 = new Question("How are Activites in a system managed?",
+                "Activity Stack", "Activity Organiser", "Preference log", 1, Question.DIFFICULTY_HARD);
         addQuestion(q4);
-        Question q15 = new Question("Placeholder",
-                "A", "B", "C", 2, Question.DIFFICULTY_HARD);
+        Question q15 = new Question("The foreground lifecycle of an activity occurs between which two commands?",
+                "onResume(), onStop()", "onResume(), onPause()", "onStart(), onResume()", 2, Question.DIFFICULTY_HARD);
         addQuestion(q15);
            }
 
     private void addQuestion(Question question) {
         ContentValues cv = new ContentValues();
         cv.put(QuestionsTable.COLUMN_QUESTION, question.getQuestion());
-        cv.put(QuestionsTable.COLUMN_OPTION1, question.getOption1());
-        cv.put(QuestionsTable.COLUMN_OPTION2, question.getOption2());
-        cv.put(QuestionsTable.COLUMN_OPTION3, question.getOption3());
-        cv.put(QuestionsTable.COLUMN_ANSWER_NR, question.getAnswerNr());
+        cv.put(QuestionsTable.COLUMN_MULTI_OPTION1, question.getMultiOption1());
+        cv.put(QuestionsTable.COLUMN_MULTI_OPTION2, question.getMultiOption2());
+        cv.put(QuestionsTable.COLUMN_MUTLI_OPTION3, question.getMultiOption3());
+        cv.put(QuestionsTable.COLUMN_ANSWER_NUMBER, question.getAnswerNumber());
         cv.put(QuestionsTable.COLUMN_DIFFICULTY, question.getDifficulty());
         db.insert(QuestionsTable.TABLE_NAME, null, cv);
     }
@@ -113,10 +114,10 @@ public class QuizDBHandler extends SQLiteOpenHelper {
             do {
                 Question question = new Question();
                 question.setQuestion(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_QUESTION)));
-                question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
-                question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
-                question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
-                question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
+                question.setMultiOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_MULTI_OPTION1)));
+                question.setMultiOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_MULTI_OPTION2)));
+                question.setMultiOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_MUTLI_OPTION3)));
+                question.setAnswerNumber(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NUMBER)));
                 questionList.add(question);
             } while (c.moveToNext());
         }
@@ -137,10 +138,10 @@ public class QuizDBHandler extends SQLiteOpenHelper {
             do {
                 Question question = new Question();
                 question.setQuestion(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_QUESTION)));
-                question.setOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION1)));
-                question.setOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION2)));
-                question.setOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_OPTION3)));
-                question.setAnswerNr(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NR)));
+                question.setMultiOption1(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_MULTI_OPTION1)));
+                question.setMultiOption2(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_MULTI_OPTION2)));
+                question.setMultiOption3(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_MUTLI_OPTION3)));
+                question.setAnswerNumber(c.getInt(c.getColumnIndex(QuestionsTable.COLUMN_ANSWER_NUMBER)));
                 question.setDifficulty(c.getString(c.getColumnIndex(QuestionsTable.COLUMN_DIFFICULTY)));
                 questionList.add(question);
             } while (c.moveToNext());

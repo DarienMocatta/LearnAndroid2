@@ -15,14 +15,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class QuizInitialise extends AppCompatActivity {
+public class QuizHomePage extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCORE = "keyHighscore";
 
-    private TextView textViewHighscore;
+    private TextView tvHighScore;
     private Spinner spinnerDifficulty;
 
     private int highscore;
@@ -54,32 +54,32 @@ public class QuizInitialise extends AppCompatActivity {
 
                 if(id== R.id.item_Activities)
                 {
-                    Intent intent = new Intent(QuizInitialise.this, ActivitiesLesson_1_v2.class);
+                    Intent intent = new Intent(QuizHomePage.this, ActivitiesLesson_1_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Sevices)
                 {
-                    Intent intent = new Intent(QuizInitialise.this, ActivitiesLesson_2_v2.class);
+                    Intent intent = new Intent(QuizHomePage.this, ActivitiesLesson_2_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Broadcast_Recievers)
                 {
-                    Intent intent = new Intent(QuizInitialise.this, ActivitiesLesson_3_v2.class);
+                    Intent intent = new Intent(QuizHomePage.this, ActivitiesLesson_3_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Content_Providers)
                 {
-                    Intent intent = new Intent(QuizInitialise.this, ActivitiesLesson_4_v2.class);
+                    Intent intent = new Intent(QuizHomePage.this, ActivitiesLesson_4_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Activity_Lifecycle)
                 {
-                    Intent intent = new Intent(QuizInitialise.this, ActivitiesLesson_5_v2.class);
+                    Intent intent = new Intent(QuizHomePage.this, ActivitiesLesson_5_v2.class);
                     startActivity(intent);
                 }
                 else if(id== R.id.item_Quiz)
                 {
-                    Intent intent = new Intent(QuizInitialise.this, QuizInitialise.class);
+                    Intent intent = new Intent(QuizHomePage.this, QuizHomePage.class);
                     startActivity(intent);
                 }
 
@@ -89,11 +89,12 @@ public class QuizInitialise extends AppCompatActivity {
         });
 
 
-        textViewHighscore = findViewById(R.id.text_view_highscore);
+        tvHighScore = findViewById(R.id.text_view_highscore);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
 
         String[] diffcultyLevels = Question.getAllDifficultyLevels();
 
+        //Array adapter for placing difficulties into spinner dropdown menu.
         ArrayAdapter<String> adapterDifficulty = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, diffcultyLevels);
         adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -118,7 +119,8 @@ public class QuizInitialise extends AppCompatActivity {
     private void startQuiz() {
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
-        Intent intent = new Intent(QuizInitialise.this, QuizActivity.class);
+        Intent intent = new Intent(QuizHomePage.this, QuizAnsweringPage.class);
+        //carries forward the difficulty selected into the next activity.
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
         startActivityForResult(intent, REQUEST_CODE_QUIZ);
     }
@@ -129,7 +131,7 @@ public class QuizInitialise extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE_QUIZ) {
             if (resultCode == RESULT_OK) {
-                int score = data.getIntExtra(QuizActivity.EXTRA_SCORE, 0);
+                int score = data.getIntExtra(QuizAnsweringPage.EXTRA_SCORE, 0);
                 if (score > highscore) {
                     updateHighscore(score);
                 }
@@ -140,12 +142,12 @@ public class QuizInitialise extends AppCompatActivity {
     private void loadHighscore() {
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         highscore = prefs.getInt(KEY_HIGHSCORE, 0);
-        textViewHighscore.setText("Highscore: " + highscore);
+        tvHighScore.setText("Highscore: " + highscore);
     }
 
     private void updateHighscore(int highscoreNew) {
         highscore = highscoreNew;
-        textViewHighscore.setText("Highscore: " + highscore);
+        tvHighScore.setText("Highscore: " + highscore);
 
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();

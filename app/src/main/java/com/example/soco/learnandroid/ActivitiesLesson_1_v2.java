@@ -18,8 +18,11 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
 
+    //variables required to enable navigation bar
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
+
+    //textview declaration, will be initialised to be scrollable
     TextView scrollTextView;
 
     @Override
@@ -27,6 +30,7 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activities_lesson_1_v2);
 
+        //youtube fragement --> this is a work around to use drawerlayout and navigation bar with youtube API
         YouTubePlayerSupportFragment frag =
                 (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_fragment);
         frag.initialize(YouTubeConfiguration.getApiKey(), this);
@@ -40,7 +44,7 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //make textview scrollable and set text
+        //make textview scrollable and set text --> converts Html to string to take advantage of stored HTML formatting in strings.xml
         scrollTextView = (TextView) findViewById(R.id.textViewScroll);
         scrollTextView.setMovementMethod(new ScrollingMovementMethod());
         scrollTextView.setText(Html.fromHtml(getString(R.string.Lesson1_String)));
@@ -48,7 +52,7 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
 
 
 
-        //NAV Bar
+        //NAV Bar --> intents corresponding to activites they should open
         NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -82,7 +86,7 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
                 }
                 else if(id== R.id.item_Quiz)
                 {
-                    Intent intent = new Intent(ActivitiesLesson_1_v2.this, QuizInitialise.class);
+                    Intent intent = new Intent(ActivitiesLesson_1_v2.this, QuizHomePage.class);
                     startActivity(intent);
                 }
 
@@ -92,13 +96,14 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
         });
 
 
-
+    //overide method to utilise precreated menu item --> becomes navigation bar.
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
-
+    //designates lesson video to be played according to youtube code. 'loadVideo' so that video starts as soon as activity
+    // is initialised.
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {
@@ -106,7 +111,7 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
            youTubePlayer.loadVideo("ibti6yg_NCc");
 
     }}
-
+    //overide method for youtube fragment --> unsucessful initialisation
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 

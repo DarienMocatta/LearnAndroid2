@@ -82,7 +82,7 @@ public class ActivitiesLesson_5_v2 extends AppCompatActivity implements YouTubeP
                 }
                 else if(id== R.id.item_Quiz)
                 {
-                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, QuizInitialise.class);
+                    Intent intent = new Intent(ActivitiesLesson_5_v2.this, QuizHomePage.class);
                     startActivity(intent);
                 }
 
@@ -99,6 +99,8 @@ public class ActivitiesLesson_5_v2 extends AppCompatActivity implements YouTubeP
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
+
+    // Corresponding YouTube URL
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {

@@ -10,12 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    //variables required to enable navigation bar
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
+
+    //introductory text for app homepage.
     TextView introText;
 
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        //Set Intro Text:
+        //Set Intro Text: converts Html to string to take advantage of stored HTML formatting in strings.xml
         introText = (TextView) findViewById(R.id.introText) ;
         introText.setText(Html.fromHtml(getString(R.string.Intro_Sring)));
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(id== R.id.item_Quiz)
                 {
-                    Intent intent = new Intent(MainActivity.this, QuizInitialise.class);
+                    Intent intent = new Intent(MainActivity.this, QuizHomePage.class);
                     startActivity(intent);
                 }
 

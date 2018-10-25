@@ -82,7 +82,7 @@ public class ActivitiesLesson_2_v2 extends AppCompatActivity implements YouTubeP
                 }
                 else if(id== R.id.item_Quiz)
                 {
-                    Intent intent = new Intent(ActivitiesLesson_2_v2.this, QuizInitialise.class);
+                    Intent intent = new Intent(ActivitiesLesson_2_v2.this, QuizHomePage.class);
                     startActivity(intent);
                 }
 
