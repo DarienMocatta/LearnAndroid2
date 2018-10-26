@@ -16,9 +16,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class QuizHomePage extends AppCompatActivity {
+
+    //Homepage implemented with reference to “Quiz App with SQLite” – by Coding in Flow
+    //Key implementation to maintain data persistency between intents such as high score from 'QuizAnsweringPage.java'
+    //https://codinginflow.com/tutorials/android/quiz-app-with-sqlite
+
+
+    //Ensures validity of a completed quiz which is parsed into and received from intents. Ensures validity of difficulty
+    //that is parsed into intent
     private static final int REQUEST_CODE_QUIZ = 1;
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
 
+    //Shared preferences enables the same instance of a 'preference' is used across application
+    //Therefore is a form of memory storage
+    //In this case used to collect and maintain high score every time homepage is loaded for display.
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCORE = "keyHighscore";
 
@@ -92,14 +103,17 @@ public class QuizHomePage extends AppCompatActivity {
         tvHighScore = findViewById(R.id.text_view_highscore);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
 
+        //Retrieves the 3 hardcoded difficulties from Quesition Class for drop-down menu (spinner)
         String[] diffcultyLevels = Question.getAllDifficultyLevels();
 
-        //Array adapter for placing difficulties into spinner dropdown menu.
+        //Array adapter for placing difficulties into spinner dropdown menu
+        //Difficulties stored in array hence need to translate for dropdown menu
         ArrayAdapter<String> adapterDifficulty = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, diffcultyLevels);
         adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDifficulty.setAdapter(adapterDifficulty);
 
+        //Displays high score in top left corner by using shared preferences memory storage.
         loadHighscore();
 
         Button buttonStartQuiz = findViewById(R.id.button_start_quiz);
@@ -139,6 +153,7 @@ public class QuizHomePage extends AppCompatActivity {
         }
     }
 
+    //Following two methods use shared preferences to retrieve key-value storage of scores.
     private void loadHighscore() {
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         highscore = prefs.getInt(KEY_HIGHSCORE, 0);

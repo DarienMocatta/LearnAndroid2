@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    //drawer layout, menu.xml and navigation view used to create nav bar.
+    //a constraint layout used within drawer layout to ensure correct positioning of other components such as textviews, fragments and buttons,
+
 
     //variables required to enable navigation bar
     private DrawerLayout dl;
@@ -19,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     //introductory text for app homepage.
     TextView introText;
-
+    //drawer layout, menu.xml and navigation view used to create nav bar.
+    //a constraint layout used within drawer layout to ensure correct positioning of other components such as textviews, fragments and buttons,
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

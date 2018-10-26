@@ -2,6 +2,7 @@ package com.example.soco.learnandroid;
 
 import android.provider.BaseColumns;
 //this class declares the columns required for SQLite database.
+//Questions comprise of a Question, 3 Options, a corresponding correct answer and a difficulty.
 
 public final class QuizTableColumns {
 

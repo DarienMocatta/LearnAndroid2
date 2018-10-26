@@ -17,9 +17,12 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class ActivitiesLesson_5_v2 extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
-
+    //drawer layout, menu.xml and navigation view used to create nav bar.
+    //a constraint layout used within drawer layout to ensure correct positioning of other components such as textviews, fragments and buttons,
+    //variables required to enable navigation bar
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
+    //textview declaration, will be initialised to be scrollable
     TextView scrollTextView;
 
     @Override
@@ -43,6 +46,8 @@ public class ActivitiesLesson_5_v2 extends AppCompatActivity implements YouTubeP
         //make textview scrollable and set text
         scrollTextView = (TextView) findViewById(R.id.textViewScroll);
         scrollTextView.setMovementMethod(new ScrollingMovementMethod());
+        //String Source from Android - Content Providers @developer.android.com/guide/components/activities/activity-lifecycle
+        //String stored in strings.xml - formatted via html and converted to string with following code.
         scrollTextView.setText(Html.fromHtml(getString(R.string.Lesson5_String)));
 
 
@@ -100,7 +105,7 @@ public class ActivitiesLesson_5_v2 extends AppCompatActivity implements YouTubeP
     }
 
 
-    // Corresponding YouTube URL
+    // Video: “The Activity Lifecycle Explained - Android Studio Tutorial” – Coding in Flow
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {

@@ -17,9 +17,12 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class ActivitiesLesson_3_v2 extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
-
+    //drawer layout, menu.xml and navigation view used to create nav bar.
+    //a constraint layout used within drawer layout to ensure correct positioning of other components such as textviews, fragments and buttons,
+    //variables required to enable navigation bar
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
+    //textview declaration, will be initialised to be scrollable
     TextView scrollTextView;
 
     @Override
@@ -43,6 +46,8 @@ public class ActivitiesLesson_3_v2 extends AppCompatActivity implements YouTubeP
         //make textview scrollable and set text
         scrollTextView = (TextView) findViewById(R.id.textViewScroll);
         scrollTextView.setMovementMethod(new ScrollingMovementMethod());
+        //String Source from Android - Broadcast Receivers @developer.android.com/reference/android/content/BroadcastReceiver
+        //String stored in strings.xml - formatted via html and converted to string with following code.
         scrollTextView.setText(Html.fromHtml(getString(R.string.Lesson3_String)));
 
 
@@ -99,6 +104,7 @@ public class ActivitiesLesson_3_v2 extends AppCompatActivity implements YouTubeP
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
+    //“Working with Android Broadcast Receiver” – Prabeesh R K
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {

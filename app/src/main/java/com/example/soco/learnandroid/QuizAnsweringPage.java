@@ -22,10 +22,24 @@ import java.util.Collections;
 import java.util.Locale;
 
 public class QuizAnsweringPage extends AppCompatActivity {
+
+    //Quiz Page implemented with reference to “Quiz App with SQLite” – by Coding in Flow
+    //Key implementation to maintain data persistency between intents such as high score from 'QuizAnsweringPage.java'
+    //Tutorial also aided with the adding of a countdown timer and changing colours when questions answered correct/wrong
+    //Tutorial also aided in maintaining a users quiz experience when flipping device between horizontal and vertical.
+
+    //https://codinginflow.com/tutorials/android/quiz-app-with-sqlite
+
+    //key-value storage like implementation in QuizHomepage. For parsing score intent that returns to QuizHomePage
+    //and remembering score.
     public static final String EXTRA_SCORE = "extraScore";
+
+    //  Is equal to 30 seconds on clock
     private static final long COUNTDOWN_AMOUNT_MILLSEC = 30000;
 
-    //
+    //This key-value memory storage for when device is flipped between horizontal and vertical
+    //To remember score, time left, the question that the user one, the answer the user had selected and
+    //the randomised question list.
     private static final String KEY_SCORE = "keyScore";
     private static final String KEY_QUESTION_COUNT = "keyQuestionCount";
     private static final String KEY_MILLIS_LEFT = "keyMillisLeft";
@@ -47,7 +61,7 @@ public class QuizAnsweringPage extends AppCompatActivity {
     private ColorStateList textColorDefaultRb;
     private ColorStateList textColorDefaultCd;
 
-    private CountDownTimer countDownTimer;
+    private CountDownTimer countDownClock;
     private long timeLeftMilliSec;
 
     private ArrayList<Question> questionList;
@@ -61,9 +75,6 @@ public class QuizAnsweringPage extends AppCompatActivity {
     private long backPressedTime;
 
 
-    //Navigation View Variables
-    private DrawerLayout dl;
-    private ActionBarDrawerToggle abdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,17 +124,21 @@ public class QuizAnsweringPage extends AppCompatActivity {
                 showSolution();
             }
         }
+        //radio button onclick listener.
 
         btnNextQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!answered) {
                     if (multiOption1.isChecked() || multiOption2.isChecked() || multiOption3.isChecked()) {
+                        //compare selection with answer
                         checkAnswer();
                     } else {
+                        //if not selection, prompt user to select and option
                         Toast.makeText(QuizAnsweringPage.this, "Please select an answer", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    //once a selection has been made and moved on from answer checker, proceed to next question.
                     showNextQuestion();
                 }
             }
@@ -159,12 +174,14 @@ public class QuizAnsweringPage extends AppCompatActivity {
             timeLeftMilliSec = COUNTDOWN_AMOUNT_MILLSEC;
             startCountDown();
         } else {
+            //finish quiz when no questions left.
             finishQuiz();
         }
     }
 
     private void startCountDown() {
-        countDownTimer = new CountDownTimer(timeLeftMilliSec, 1000) {
+        //start new countdown, counting per 1 second.
+        countDownClock = new CountDownTimer(timeLeftMilliSec, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeLeftMilliSec = millisUntilFinished;
@@ -173,6 +190,7 @@ public class QuizAnsweringPage extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                //when time runs out use users input as selected answer.
                 timeLeftMilliSec = 0;
                 updateCountDownText();
                 checkAnswer();
@@ -196,13 +214,15 @@ public class QuizAnsweringPage extends AppCompatActivity {
     }
 
     private void checkAnswer() {
+        //check an answer option has been selected
         answered = true;
-
-        countDownTimer.cancel();
+        //stop count down
+        countDownClock.cancel();
 
         RadioButton rbSelected = findViewById(optionGroup.getCheckedRadioButtonId());
+        //Index starts at zero + 1 for correct entry.
         int answerNr = optionGroup.indexOfChild(rbSelected) + 1;
-
+        //Checks hard coded attribute answer number matches with user input
         if (answerNr == currentQuestion.getAnswerNumber()) {
             score++;
             tvCurrentScore.setText("Score: " + score);
@@ -211,6 +231,11 @@ public class QuizAnsweringPage extends AppCompatActivity {
         showSolution();
     }
 
+    //By Default after a question is answered it will turn red. However special conditions for when question answered correctly
+    //turning it green.
+    //Uses Question object variable 'AnswerNumber', where the correct answer is specified 1, 2 or 3.
+    //AnswerNumber in UI follows downwards linear order due to order of radio buttons.
+    // This is intuitive for users.
     private void showSolution() {
         multiOption1.setTextColor(Color.RED);
         multiOption2.setTextColor(Color.RED);
@@ -238,6 +263,8 @@ public class QuizAnsweringPage extends AppCompatActivity {
         }
     }
 
+    //shared preference memory of score than is parsed back through to QuizHomePage
+    //Determination fo high score determined in homepage.
     private void finishQuiz() {
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_SCORE, score);
@@ -245,6 +272,7 @@ public class QuizAnsweringPage extends AppCompatActivity {
         finish();
     }
 
+    //User must double tap back button to exit quiz. Avoid accidental taps ending quiz prematurely.
     @Override
     public void onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
@@ -256,14 +284,16 @@ public class QuizAnsweringPage extends AppCompatActivity {
         backPressedTime = System.currentTimeMillis();
     }
 
+    //Question ended when timer is 0. User can move onto next question.
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
+        if (countDownClock != null) {
+            countDownClock.cancel();
         }
     }
 
+    //When activity created/destroyed by flipping phone vertical/horizontal and maintains values as explained at top of page.
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

@@ -17,7 +17,8 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubePlayer.OnInitializedListener {
-
+    //drawer layout, menu.xml and navigation view used to create nav bar.
+    //a constraint layout used within drawer layout to ensure correct positioning of other components such as textviews, fragments and buttons,
     //variables required to enable navigation bar
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
@@ -47,6 +48,9 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
         //make textview scrollable and set text --> converts Html to string to take advantage of stored HTML formatting in strings.xml
         scrollTextView = (TextView) findViewById(R.id.textViewScroll);
         scrollTextView.setMovementMethod(new ScrollingMovementMethod());
+
+        //String Source from Android - Activities @developer.android.com/guide/components/activities/
+        //String stored in strings.xml - formatted via html and converted to string with following code.
         scrollTextView.setText(Html.fromHtml(getString(R.string.Lesson1_String)));
 
 
@@ -96,14 +100,14 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
         });
 
 
-    //overide method to utilise precreated menu item --> becomes navigation bar.
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
-    //designates lesson video to be played according to youtube code. 'loadVideo' so that video starts as soon as activity
-    // is initialised.
+
+    //“Activities and Intents” – by Void Realms
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {
@@ -111,7 +115,7 @@ public class ActivitiesLesson_1_v2 extends AppCompatActivity implements YouTubeP
            youTubePlayer.loadVideo("ibti6yg_NCc");
 
     }}
-    //overide method for youtube fragment --> unsucessful initialisation
+
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
 

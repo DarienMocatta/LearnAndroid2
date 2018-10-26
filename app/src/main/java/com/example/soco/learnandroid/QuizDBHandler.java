@@ -11,6 +11,8 @@ import com.example.soco.learnandroid.QuizTableColumns.*;
 import java.util.ArrayList;
 
 //class to create sqlite database.
+//SQLite Database implemented teachings from “Quiz App with SQLite” – by Coding in Flow
+// https://codinginflow.com/tutorials/android/quiz-app-with-sqlite
 public class QuizDBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "LearnAndroidQuiz.db";
     private static final int DATABASE_VERSION = 1;
@@ -36,17 +38,19 @@ public class QuizDBHandler extends SQLiteOpenHelper {
                 QuestionsTable.COLUMN_DIFFICULTY + " TEXT" +
                 ")";
 
+        //initialises table
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
-        fillQuestionsTable();
+        insertQuestions();
     }
 
+    //To avoid errors when alterations made to database. Can change version variable at top and the database will fix itself.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME);
         onCreate(db);
     }
-
-    private void fillQuestionsTable() {
+    //creates Question objects will are serialised via "Parceable" which enables the question data to be passed between activities
+    private void insertQuestions() {
         Question q1 = new Question("Which of the following are not a key component in Android",
                 "Activities", "Content Providers", "Intents", 3, Question.DIFFICULTY_EASY);
         addQuestion(q1);
