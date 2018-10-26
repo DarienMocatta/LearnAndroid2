@@ -1,0 +1,43 @@
+INFS3634 - Mobile App Development
+Group Assignment for Group 33;
+-	Darien Mocatta
+-	Daniel Vale
+Tutor: Jeremy
+Class: Wednesdays 11am – 1pm
+App Name: Learn Android
+
+GitHub Repository:
+
+https://github.com/DarienMocatta/LearnAndroid2
+
+Guidelines for Building App:
+-	No overall guidelines, app is self-contained and does not have any points of failure or crashing
+-	Since the app was coded on a surface (very slow computer) loading UI elements can take a few seconds at times with a black screen. If you are also using a slow computer this is normal.
+Key Features of App:
+-	YouTube API implemented via fragments which enables AppCompat classes for use of navigation bar
+-	SQLite database to stored data about question objects
+-	Quiz with countdown timer and multiple choice
+-	Quiz has persistency when tilted horizontally and vertically, retaining countdown and question selection
+-	Overall amazing learning experience to teach Jeremy a thing or two about android.
+Peer Review:
+-	Equal contributions from both Darien Mocatta and Daniel Vale
+
+
+Sources: (all found within code as well)
+Activities:
+https://developer.android.com/guide/components/activities/
+YouTube Video: “Activities and Intents” – by Void Realms
+Services:
+https://developer.android.com/guide/components/services
+YouTube Video:  “Android tutorial for beginners - 72 - Android Services” – by Prabeesh R K
+Broadcast Receivers:
+https://developer.android.com/reference/android/content/BroadcastReceiver
+YouTube Video:  “Working with Android Broadcast Receiver” – by Prabeesh R K
+Content Providers
+https://developer.android.com/guide/topics/providers/content-providers
+YouTube Video: “Lecture 24: Android Persistent Storage and Content Providers (parts 1 and 2)” –  by Douglas Schmidt
+Activity Lifecycle:
+https://developer.android.com/guide/components/activities/activity-lifecycle
+YouTube Video: “The Activity Lifecycle Explained - Android Studio Tutorial” – Coding in Flow
+Quiz Functionality Tutorial:
+https://codinginflow.com/tutorials/android/quiz-app-with-sqlite - “Quiz App with SQLite” – Coding in Flow
